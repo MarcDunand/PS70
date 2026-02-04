@@ -1,8 +1,8 @@
 body {
     font: 20px "Gill Sans", Verdana, sans-serif;
     line-height: 1.8;
-    color: #000000;
-    background-color: #dcdcdc;
+    color: #1f1063a8;
+    background-color: #b1c4b1;
     padding-top: 0px !important;
   }
 
@@ -14,7 +14,7 @@ p {font-size: 16px;}
 .margin {margin-bottom: 30px;}
 
 a {
-  color: #000000;
+  color: #982a2a;
 }
 
 .container-fluid {
@@ -23,8 +23,8 @@ a {
 }
 
 nav {
-  background-color: #dcdcdc;
-  color: #EEE7E8;
+  background-color: #862727;
+  color: #762b36;
   padding: 50px 0px;
 }
 
@@ -37,40 +37,40 @@ nav {
 .nav-title{
   margin-left: 15px;
   margin-right: 15px;
-  color: #000000;
+  color: #b1c4b1;
 }
 
 .nav-link {
-  border: 3px outset #a3a3a3;
+  border: 3px outset #703e3e;
   border-radius: 20px;
   padding: 10px 30px;
-  background-color: #a3a3a3;
-  color: #EEE7E8;
+  background-color: hsl(0, 49%, 19%);
+  color: #ba6370;
   transition: 0.3s;
 }
 
 .nav-link:hover {
-  border: 3px outset #FFFFFF;
+  border: 3px outset #575d1d;
   border-radius: 20px;
   padding: 10px 30px;
-  background-color: #a3a3a3;
+  background-color: #448c22;
   transition: 0.3s;
 }
 
 #btn {
-  border: 3px outset #FFFFFF;
+  border: 7px outset #a67171;
   border-radius: 40px;
   padding: 10px 30px;
-  background-color: #a3a3a3;
+  background-color: #738e2e;
   color: #000000;
   transition: 0.3s;
 }
 
 #btn:hover {
-  border: 3px inset #FFFFFF;
+  border: 3px inset #772121;
   border-radius: 40px;
   padding: 10px 30px;
-  background-color: #a3a3a3;
+  background-color: #af3636;
   transition: 0.3s;
 }
 
