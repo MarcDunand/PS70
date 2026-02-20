@@ -25,10 +25,46 @@
 
 <h3>Week 3: Hand Tools and Fabrication</h3>
 
+<p class="margin">   </p>
+
 <h4>Kinetic Sculpture</h4>
 
+<p class="margin">   </p>
 
+One of the major components of the paper marbling machine is ink control. In the prototype that we built last semester, the inks were gravity fed with small solonoids controlling the flow of ink.
 
+<p class="margin">   </p>
+
+One issue with this approach is that any ink that was in the tubes of the marbling machine was prohibitively challenging to recover, resulting in quite a bit of wasted ink.
+
+<p class="margin">   </p>
+
+To address this issue, for the final version we decided to swap over from solonoids to peristaltic pumps. Unlike solonoids, peristaltic pumps control the flow of liquid fully mechanically. This gives both finer control over the amount of liquid that is going through the pump and allows for the pump to reverse directions, returning unused ink from the tubes back to the ink reservoirs. This eliminates our concern about waste.
+
+<p class="margin">   </p>
+
+For this week, I focused on getting the moving components (that is the pumps) working correctly, which I was able to do succesfully! As you can see in the video below, all four pumps are able to pump water in both directions! We currently plan to have four different colors of ink, so four pumps will be sufficient for the project!
+
+<p class="margin">   </p>
+
+<iframe 
+  width="1000" 
+  height="600" 
+  src="https://www.youtube.com/embed/2d1Yt8x9T7Q"
+  title="Peristaltic Pump: Final Bidirectional Demo"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen>
+</iframe>
+
+<p class="margin">   </p>
+
+My setup is fully controlled through one ESP32 microcontroller and two motor drivers. Each driver is capable of driving two motors so I have a pair of motors attached to each of the two drivers, giving me control over four total motors.
+
+<p class="margin">   </p>
+
+For now, the microcontroller programming is extremely basic, just having each of my four pumps push water one way and then the other, mostly as a test to make sure everything is working as expected. Later on, this microcontroller will interface with my larger paper marbling system which is run from my computer.
 
 </div>
 </xmp>
