@@ -1,0 +1,299 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2707
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red96\green126\blue3;\red255\green255\blue255;\red61\green73\blue78;
+\red9\green74\blue76;\red131\green148\blue149;\red17\green134\blue139;\red52\green62\blue66;\red199\green63\blue5;
+}
+{\*\expandedcolortbl;;\cssrgb\c44706\c55686\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c30588\c35686\c38039;
+\cssrgb\c0\c36078\c37255;\cssrgb\c58431\c64706\c65098;\cssrgb\c0\c59216\c61569;\cssrgb\c26275\c30980\c32941;\cssrgb\c82745\c32941\c0;
+}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 #include\cf4 \strokec4  \cf5 \strokec5 <ESP32Servo.h>\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 //Declare Global Variables\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 int\cf4 \strokec4  lidServoPin = D0;\cb1 \
+\cf7 \cb3 \strokec7 int\cf4 \strokec4  switchServoPin = D1;\cb1 \
+\cf7 \cb3 \strokec7 int\cf4 \strokec4  switchPin = D2;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 //Declare a class for the switch\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 class\cf4 \strokec4  UselessSwitch\cf8 \strokec8 \{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Variable for the pin\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 int\cf4 \strokec4  pin;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //The switches are digital signals, so it will read 1 or 0\cf4 \cb1 \strokec4 \
+\cf6 \cb3 \strokec6   //Variable to hold the current state of the switch\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 int\cf4 \strokec4  currentState;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Variable to hold the last state of the switch\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 int\cf4 \strokec4  lastState = \cf5 \strokec5 1\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Code the constructor for the class\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 public:\cf4 \cb1 \strokec4 \
+\cb3   \cf9 \strokec9 UselessSwitch\cf8 \strokec8 (\cf7 \strokec7 int\cf4 \strokec4  \cf8 \strokec8 input_pin)\{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Set the pin member variable to the input parameter for the pin\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     pin = input_pin;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Set the switch pin to input pullup\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf9 \strokec9 pinMode\cf8 \strokec8 (\cf4 \strokec4 pin, INPUT_PULLUP\cf8 \strokec8 )\cf4 \strokec4 ;\cb1 \
+\cb3   \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Class functions\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 bool\cf4 \strokec4  \cf9 \strokec9 isPressed\cf8 \strokec8 ()\{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Read the state of switch and store it in the current state variable\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     currentState = \cf9 \strokec9 digitalRead\cf8 \strokec8 (\cf4 \strokec4 pin\cf8 \strokec8 )\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Conditional statements for the switch\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf2 \strokec2 if\cf4 \strokec4  \cf8 \strokec8 (\cf4 \strokec4 currentState == \cf5 \strokec5 0\cf4 \strokec4  && lastState == \cf5 \strokec5 1\cf8 \strokec8 )\{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6       //Store the current state as the last state\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3       lastState = currentState;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6       //Return the desired state of true or false\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3       \cf2 \strokec2 return\cf4 \strokec4  \cf5 \strokec5 false\cf4 \strokec4 ;\cb1 \
+\cb3     \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\cb3     \cf2 \strokec2 else\cf4 \strokec4  \cf2 \strokec2 if\cf4 \strokec4  \cf8 \strokec8 (\cf4 \strokec4 currentState == \cf5 \strokec5 1\cf4 \strokec4  && lastState == \cf5 \strokec5 0\cf8 \strokec8 )\{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6       //Store the current state as the last state\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3       lastState = currentState;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6       //Return the desired state of true or false\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3       \cf2 \strokec2 return\cf4 \strokec4  \cf5 \strokec5 true\cf4 \strokec4 ;\cb1 \
+\cb3     \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\cb3   \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 \strokec8 \}\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 //Declare a class for the servos\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 class\cf4 \strokec4  UselessServo\cf8 \strokec8 \{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Member variables\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   Servo servo;\cb1 \
+\cb3   \cf7 \strokec7 int\cf4 \strokec4  servoPin;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Current position of the servo\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 int\cf4 \strokec4  pos;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Start position of the servo\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 int\cf4 \strokec4  startPos;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //End position of the servo\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 int\cf4 \strokec4  endPos;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Time in between each servo movement\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 int\cf4 \strokec4  updateInterval;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //How much to increment the position (start at -1 because start position is at 180)\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 int\cf4 \strokec4  increment = -\cf5 \strokec5 1\cf4 \strokec4 ;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Time variable to hold last checked time\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 unsigned\cf4 \strokec4  \cf7 \strokec7 long\cf4 \strokec4  previousMillis;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Code the constructor for the class\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 public:\cf4 \cb1 \strokec4 \
+\cb3   \cf9 \strokec9 UselessServo\cf8 \strokec8 (\cf7 \strokec7 int\cf4 \strokec4  \cf8 \strokec8 input_pin\cf4 \strokec4 , \cf7 \strokec7 int\cf4 \strokec4  \cf8 \strokec8 interval)\{\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Set the servoPin variable to the input parameter for the pin\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     servoPin = input_pin;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Set the start position\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     startPos = \cf5 \strokec5 180\cf4 \strokec4 ;\cb1 \
+\cb3     pos = startPos;\cb1 \
+\cb3     endPos = \cf5 \strokec5 0\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Set the update interval member variable to the input parameter for the update interval\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     updateInterval = interval;\cb1 \
+\
+\cb3   \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\
+\cb3   \cf7 \strokec7 void\cf4 \strokec4  \cf9 \strokec9 Attach\cf8 \strokec8 ()\{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Attach the servo to the servoPin\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf9 \strokec9 servo\cf4 \strokec4 .\cf9 \strokec9 attach\cf8 \strokec8 (\cf4 \strokec4 servoPin\cf8 \strokec8 )\cf4 \strokec4 ;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Start the servo at the starting position\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf9 \strokec9 servo\cf4 \strokec4 .\cf9 \strokec9 write\cf8 \strokec8 (\cf4 \strokec4 startPos\cf8 \strokec8 )\cf4 \strokec4 ;\cb1 \
+\cb3   \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\
+\cb3   \cf7 \strokec7 void\cf4 \strokec4  \cf9 \strokec9 moveForward\cf8 \strokec8 ()\{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Conditional statement for checking the time and updating the position of the servo to move Forward\cf4 \cb1 \strokec4 \
+\cf6 \cb3 \strokec6     //If the current time minus the previous time is greater than the update interval AND\cf4 \cb1 \strokec4 \
+\cf6 \cb3 \strokec6     //The position of the servo hasn't reached the end position\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf2 \strokec2 if\cf8 \strokec8 ((\cf9 \strokec9 millis\cf8 \strokec8 ()\cf4 \strokec4  - previousMillis\cf8 \strokec8 )\cf4 \strokec4  > updateInterval && pos != endPos\cf8 \strokec8 )\{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6       //Set previous millis to millis()\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3       previousMillis = \cf9 \strokec9 millis\cf8 \strokec8 ()\cf4 \strokec4 ;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6       //Increment the position variable\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3       pos += increment;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6       //Move the servo\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3       \cf9 \strokec9 servo\cf4 \strokec4 .\cf9 \strokec9 write\cf8 \strokec8 (\cf4 \strokec4 pos\cf8 \strokec8 )\cf4 \strokec4 ;\cb1 \
+\cb3     \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\cb3   \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Conditional statement for checking the time and updating the position of the servo to move Backward\cf4 \cb1 \strokec4 \
+\cf6 \cb3 \strokec6   //If the current time minus the previous time is greater than the update interval AND\cf4 \cb1 \strokec4 \
+\cf6 \cb3 \strokec6   //The position of the servo hasn't reached the start position\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 void\cf4 \strokec4  \cf9 \strokec9 moveBackward\cf8 \strokec8 ()\{\cf4 \cb1 \strokec4 \
+\cb3     \cf2 \strokec2 if\cf8 \strokec8 (\cf4 \strokec4  \cf8 \strokec8 (\cf9 \strokec9 millis\cf8 \strokec8 ()\cf4 \strokec4  - previousMillis\cf8 \strokec8 )\cf4 \strokec4  > updateInterval && pos != startPos \cf8 \strokec8 )\{\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6       //Set previous millis to millis()\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3       previousMillis = \cf9 \strokec9 millis\cf8 \strokec8 ()\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6       //Decrement the position variable\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3       pos -= increment;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6       //Move the servo\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3       \cf9 \strokec9 servo\cf4 \strokec4 .\cf9 \strokec9 write\cf8 \strokec8 (\cf4 \strokec4 pos\cf8 \strokec8 )\cf4 \strokec4 ;\cb1 \
+\
+\cb3     \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\cb3   \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Check if a servo is moving so only one servo moves at a time\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf7 \strokec7 bool\cf4 \strokec4  \cf9 \strokec9 isMoving\cf8 \strokec8 ()\{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //If the position is equal to the start or end position, then the servo not moving so return 0 or false\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf2 \strokec2 if\cf8 \strokec8 (\cf4 \strokec4 pos == endPos || pos == startPos\cf8 \strokec8 )\{\cf4 \cb1 \strokec4 \
+\cb3       \cf2 \strokec2 return\cf4 \strokec4  \cf5 \strokec5 0\cf4 \strokec4 ;\cb1 \
+\cb3     \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //If it isn't at the start or end position, then the servo is moving so return 1 or true\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf2 \strokec2 else\cf8 \strokec8 \{\cf4 \cb1 \strokec4 \
+\cb3       \cf2 \strokec2 return\cf4 \strokec4  \cf5 \strokec5 1\cf4 \strokec4 ;\cb1 \
+\cb3     \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\cb3   \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 \strokec8 \}\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 //Declare new member of the UselessServo class for the lid Servo with update interval of 5 (or whatever you want)\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 UselessServo \cf9 \strokec9 lidServo\cf8 \strokec8 (\cf4 \strokec4 lidServoPin, \cf5 \strokec5 5\cf8 \strokec8 )\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 //Declare new member of the UselessServo class for the switch Servo with update interval of 1 (or whatever you want)\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 UselessServo \cf9 \strokec9 switchServo\cf8 \strokec8 (\cf4 \strokec4 switchServoPin, \cf5 \strokec5 1\cf8 \strokec8 )\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 //Declare new member of the UselessSwitch class\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 UselessSwitch \cf9 \strokec9 mainSwitch\cf8 \strokec8 (\cf4 \strokec4 switchPin\cf8 \strokec8 )\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 void\cf4 \strokec4  \cf9 \strokec9 setup\cf8 \strokec8 ()\cf4 \strokec4  \cf8 \strokec8 \{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Use the Attach() class function to attach the lid servo and switch servo\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf9 \strokec9 lidServo\cf4 \strokec4 .\cf9 \strokec9 Attach\cf8 \strokec8 ()\cf4 \strokec4 ;\cb1 \
+\cb3   \cf9 \strokec9 switchServo\cf4 \strokec4 .\cf9 \strokec9 Attach\cf8 \strokec8 ()\cf4 \strokec4 ;\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 \strokec8 \}\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 void\cf4 \strokec4  \cf9 \strokec9 loop\cf8 \strokec8 ()\cf4 \strokec4  \cf8 \strokec8 \{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6   //Use the switch class function isPressed() to check the state of the switch\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3   \cf2 \strokec2 if\cf8 \strokec8 (\cf9 \strokec9 mainSwitch\cf4 \strokec4 .\cf9 \strokec9 isPressed\cf8 \strokec8 ()\cf4 \strokec4  == \cf5 \strokec5 1\cf8 \strokec8 )\{\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Use the servo class function moveForward() to move the lid servo forward\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf9 \strokec9 lidServo\cf4 \strokec4 .\cf9 \strokec9 moveForward\cf8 \strokec8 ()\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Check if the lid servo is done moving, once it is, move the switch servo forward using the moveForward() function\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf2 \strokec2 if\cf8 \strokec8 (\cf9 \strokec9 lidServo\cf4 \strokec4 .\cf9 \strokec9 isMoving\cf8 \strokec8 ()\cf4 \strokec4  == \cf5 \strokec5 0\cf8 \strokec8 )\{\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6       //Move the switch servo forward\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3       \cf9 \strokec9 switchServo\cf4 \strokec4 .\cf9 \strokec9 moveForward\cf8 \strokec8 ()\cf4 \strokec4 ;\cb1 \
+\
+\cb3     \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\cb3   \cf8 \strokec8 \}\cf4 \strokec4  \cf2 \strokec2 else\cf8 \strokec8 \{\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Move the switch servo backward using the moveBackward()\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf9 \strokec9 switchServo\cf4 \strokec4 .\cf9 \strokec9 moveBackward\cf8 \strokec8 ()\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6     //Check if the switch servo is done moving, once it is, move the lid servo backward using the moveBackward() function\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf2 \strokec2 if\cf8 \strokec8 (\cf9 \strokec9 switchServo\cf4 \strokec4 .\cf9 \strokec9 isMoving\cf8 \strokec8 ()\cf4 \strokec4  == \cf5 \strokec5 0\cf8 \strokec8 )\{\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6       //Move the lid servo backward\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3       \cf9 \strokec9 lidServo\cf4 \strokec4 .\cf9 \strokec9 moveBackward\cf8 \strokec8 ()\cf4 \strokec4 ;\cb1 \
+\
+\cb3     \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\cb3   \cf8 \strokec8 \}\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 \strokec8 \}\cf4 \cb1 \strokec4 \
+\
+}
