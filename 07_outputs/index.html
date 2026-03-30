@@ -65,11 +65,37 @@
 
 <p class="margin">   </p>
 
-<p>With the oscilloscope, </p>
+<p>With the oscilloscope, I decided to take a closer look at what my peristaltic pump motors were pulling in terms of voltage and current. Voltage wise, my motor was taking at maximum just under 12V and at minimum exactly 0V. This makes sense as they are working off of a 12V power supply. At first, I was confused as to the rapid oscilation between 0V and 12ish V as I hadn't programmed any PWM, but I'm pretty sure that PWM is built into the motor drivers between the ESP32 that I programmed and the motors themselves. If the drivers are taking in the simple, constant currents from the arduino and converting them into PWM for the motors themselves, it would explain what I saw. The oscillation appears to be on the order of 5 KHz.</p>
 
 <p class="margin">   </p>
 
-<p>Past this MVP, the remaining ground to cover is</p>
+<p>Past this MVP, the remaining ground to cover is primarily about integrating these two components. Currently, the coreXY is run off of a Manta M4P 3D printer board while the four pumps are controlled with an ESP32. Due to the limited pins on the Manta, I am not able to run everything directly off of it, so instead, I will have set up a system where the Manta sends signals to the ESP32 which then controls the pumps, which might be a bit complicated.</p>
+
+<p>Additionally, I need to create an updated version of the software side of things. Currently, I control my paper marbling machine by sending it a set of SVGs which the old chip interpreted like a set of laser cutters: dripping pigment when the laser was "on", and witholding pigment when the laser was "off". I want to create a more custom system that is designed specifically for paper marbling rather than a hacked version of an existing system.</p>
+
+<p>Finally, this is out of scope for this semester, but part of the final goal of this project as it is defined as a research study with the CBA at the Media Lab is to replace the current coreXY design with a novel coreXYZ design (so a set of three motors capable of moving a gantry in 3D with all three of the motors stationary on the frame of the gantry). This is quite a complex system but it will ultimately allow for incredibly high speed paper marbling and the stirring pin of the marbler moving through the marbling liquid at a speed that will dramatically increase the time efficiency of the paper marbling machine relative to the previous version.</p>
+
+<p class="margin">   </p>
+
+<p>See below a further gallery of MVP images.</p>
+
+<image style = "width: 100%" src = "./IMG_0062.jpeg"> </image>
+
+<p class="margin">   </p>
+
+<image style = "width: 100%" src = "./IMG_0063.jpeg"> </image>
+
+<p class="margin">   </p>
+
+<image style = "width: 100%" src = "./IMG_0065.jpeg"> </image>
+
+<p class="margin">   </p>
+
+<image style = "width: 100%" src = "./IMG_0067.jpeg"> </image>
+
+<p class="margin">   </p>
+
+<image style = "width: 100%" src = "./IMG_0068.jpeg"> </image>
 
 
 </div>
