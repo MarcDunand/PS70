@@ -25,16 +25,60 @@
 
 <h3>Week 9: Radio, WiFi, Bluetooth (IoT)</h3>
 
+<p class="margin">   </p>
+
+<h4>Controlling the CoreXY Over Wifi</h4>
+
+<p class="margin">   </p>
+
+<p>For this week, I got my Manta board working over wifi. This is a pretty heavy duty 3D printing board so it comes with a built in web UI once you are able to find its IP address over LAN. Once you are able to access that, you can send it full gcode files for it to execute as well as perfoming basic actions like moving and homing at the press of a button.</p>
+
+<p class="margin">   </p>
+
+<p>Find below a full tutorial of how to find and connect to the Manta board that I put together for documentation:</p>
+
+<p class="margin">   </p>
+
+<h4>1: Configuring the Manta board</h4>
+<p class="margin">   </p>
+
+<p>Before you begin, UNPLUG AND POWER OFF the manta board completely</p>
+<p>Remove micro SD from Manta and plug it into your computer</p>
+<p>Open the SD on your computer and locate the ‘system.cfg’ file</p>
+<image style = "width: 250px" src = "./configureManta1.png"> </image>
+<p>Open system.cfg with your favorite text editor. For this demo, I use vscode.</p>
+<p>In system.cfg, locate the two values ‘WIFI_SSID’ and ‘WIFI_PASSWD’. Fill these in with your wifi network’s SSID (usually just the name of the network) and your wifi network’s password.</p>
+<image style = "width: 400px" src = "./mantaConfig2.png"> </image>
+<p>Save the file, eject the SD card and plug it back into the Manta</p>
+<p>You may now plug your board back in</p>
+<p class="margin">   </p>
+<h4>2: Locating the Manta on your network</h4>
+<p class="margin">   </p>
+<p>Download Angry IP Scanner</p>
+<p>Make sure that your computer is connected to the same wifi network that you configured the manta board to use</p>
+<p>Open the scanner, press ‘start’ and wait for the scan to complete</p>
+<image style = "width: 425px" src = "./locateMantaBoardWifi1.png"> </image>
+<p>Once the scan is complete, scroll through the scan results looking for a device with a name including ‘BIGTREE’ or ‘MANTA’.</p>
+<image style = "width: 350px" src = "./locateMantaBoardWifi2.png"> </image>
+<p>Copy the IP number on that device (in this case 192.168.0.201) and paste it directly into your browser</p>
+<p>The BIGTREE control panel for the Manta board should now show up in your browser!</p>
+<image style = "width: 300px" src = "./locateMantaBoardWifi3.png"> </image>
+<p class="margin">   </p>
+<p class="margin">   </p>
+<p>With this set up, I can now control my coreXY over the local network via the Manta board, but this does not yet let me do anything interesting with the board. For that, I have to write Gcode to send a bunch of sequential commands to the board.</p>
+<p>For now, I wrote a simple set of Gcode commands that simply makes the coreXY rapidly trace out a square with one corner at the home position. You can download my gcode file below.</p>
+<p class="margin">   </p>
+<p>See here a quick demo of wifi control working with my coreXY!</p>
+<iframe width="1000" height="600" src="https://youtu.be/PlcGV6LmclI
+" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 <p class="margin">   </p>
 <div class="flexrow">
-  <a id="btn" href="wk9.zip" download>Download my files from this week!
+  <a id="btn" href="gcodeControl.zip" download>Download my files from this week!
   </a>
 </div>
 <p class="margin">   </p>
-
-<h4>Assignment: [Program something with IOT]</h4>
-
 
 
 
