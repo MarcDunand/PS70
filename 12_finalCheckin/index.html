@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title>PS70: Intro to Digital Fabrication </title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../style.css" rel="stylesheet">
+
+
+<nav class="navbar navbar-expand-sm navbar-dark" style=" color: #EEE7E8;">
+  <div style="align-items: center; justify-content: center;" class="container-fluid">
+    <div class="flexrow">
+      <h2 class="nav-title">PS70 Fall 2024</h2>
+    </div>
+    <div class="navbar-nav">
+      <h4><a class="nav-link" href="../index.html">Home</a></h4>
+      <h4><a class="nav-link" href="../about.html">About</a></h4>
+    </div>
+  </div>
+</nav>
+
+<body>
+<xmp style="display:none;">
+<div class="textcontainer">
+<p class="margin"></p>
+
+<h3>Final Project Checkin</h3>
+
+<p>For the final checkin before my paper marbling machine is officially finished, I have completed all wiring and hardware!</p>
+<p>Up until this point, the marbling machine was seperated into two components: the pumps and the gantry. The pumps were controlled over serial by an ESP32 and the gantry was controlled over wifi by a Manta 3D printer board.</p>
+<p>I have now integrated the pumps into the manta board. Due to the size of the manta board, I was able to repurpose eight unused pins (which would have been used for things like controlling the temperature of extrusion or plugging into a display) to instead send digital signals to my pump drivers.</p>
+<p>This took eight pins in total as I am using L298N drivers and peristaltic pumps that require two digital signals per pump. You can see a picture of the wiring here:</p>
+<image style = "width: 475px" src = "./newWirings.jpg"> </image>
+<p>This means that everything is now controlled over wifi. As it stands, I can send gcode commands to the Mainsail web UI interface for the Manta board, which will then control both the coreXY gantry and the peristaltic pumps. See a demo video of everything working here!</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jwsHXnELu5M?si=kaoC9qu0x3Z9Zdik" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>At this point, in terms of the physical design all that remains is to hook up the tubes of the peristaltic pumps to both the ink reservoirs (which I already have from the project prototype) and then also connect the other end of the pumps to the head of the gantry so that it can actually direct the flow of ink around the paper marbling.</p>
+<p>On the software side, everything is set for programming the manta board and now I just need to create a nice interface for computationally designing paper marblings to be produced by the physical machine!</p>
+</div>
+</xmp>
+</body>
+
+<script src="../strapdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+
+</html>
