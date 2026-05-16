@@ -27,7 +27,40 @@
 
 <h4>Assignment 1: Capactive Sensor<h4>
 
+<p>This was pretty simple! I used two capacitive plates with the Tx-Rx setup to measure the capacitance between the two plates, through various materials, etc. Here's my code (from the website) and setup:</p>
+
+<image style = "width: 400px" src = "./capacitance.jpg"> </image>
+<image style = "width: 400px" src = "./capacitanceCode.png"> </image>
+
+
 <h4>Assignment 2: [Use + Calibrate Another Sensor]</h4>
+
+<p>This is where things get interesting! I am writing my documentation on 5/15, right at the end of the semester, but right around the time of this assignment, I was working on setting up sensorless homing for the gantry of my marbling machine.</p>
+
+<p>Sensorless homing works by simply moving the carriage in the negative x and y directions until a sudden increase of resistance to motion is detected in the motors. This is detected by a change in the back-EMF of the motor, which the steppers that I am using for my gantry are capable of reporting back to the 3D printer board which controls everything. When the 3D printer recieves this signal from the motor, it knows that it has completed homing in the corresponding dimension. I give a demo and go into a bit more detail here:</p>
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/fTteY2W4OQc?si=8G9yZ9BTMPbRdbQw"
+  title="YouTube video player"
+  frameborder="0" 
+  allow=
+    "accelerometer; 
+    autoplay; 
+    clipboard-write; 
+    encrypted-media; 
+    gyroscope; 
+    picture-in-picture; 
+    web-share" 
+  referrerpolicy="strict-origin-when-cross-origin" 
+  allowfullscreen>
+</iframe>
+
+<p>The homing code is actually incredibly simple. All that this is doing is setting the movement mode to absolute positioning and then homing first the y-axis and then the x-axis. The minutia of sensorless homing is built into the Manta board and I am able to enable the sensorless homing mode with a simple boolean statement.</p>
+
+<image style = "width: 250px" src = "./homingGcode.png"> </image>
+
 
 </div>
 </xmp>
