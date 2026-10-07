@@ -1,8 +1,8 @@
 body {
     font: 20px "Gill Sans", Verdana, sans-serif;
     line-height: 1.8;
-    color: #6fa85b;
-    background-color: #160c05;
+    color: #83b87a;
+    background-color: #140e08;
     padding-top: 0px !important;
   }
 
@@ -14,11 +14,19 @@ p {font-size: 16px;}
 .margin {margin-bottom: 30px;}
 
 a {
-  color: #d07a28;
+  color: #FF5C14;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #d07a28;
+a:hover {
+  color: #FCD514;
+}
+
+h1, h2, h3 {
+  color: #FCD514;
+}
+
+h4, h5, h6 {
+  color: #FF8A1B;
 }
 
 img, iframe {
@@ -40,8 +48,9 @@ iframe[width="560"] {aspect-ratio: 560 / 315; height: auto;}
 }
 
 nav {
-  background-color: #b85a10;
-  color: #7a3a0c;
+  background-color: #0a3a0d;
+  border-bottom: 4px solid #FF5C14;
+  color: #FCD514;
   padding: 50px 0px;
 }
 
@@ -56,45 +65,45 @@ nav {
 .nav-title{
   margin-left: 15px;
   margin-right: 15px;
-  color: #1a6317;
+  color: #FCD514;
   font-weight: bold;
 }
 
 .navbar .navbar-nav .nav-link {
-  border: 3px outset #dd9440;
+  border: 3px outset #FF8A1B;
   border-radius: 20px;
   padding: 10px 30px;
-  background-color: #1c3d15;
-  color: #d98434;
+  background-color: #140e08;
+  color: #FF8A1B;
   transition: 0.3s;
 }
 
 .navbar .navbar-nav .nav-link:hover {
-  border: 3px outset #1c3d15;
+  border: 3px outset #FCD514;
   border-radius: 20px;
   padding: 10px 30px;
-  background-color: #dd9440;
-  color: #0a1707;
+  background-color: #FF8A1B;
+  color: #140e08;
   transition: 0.3s;
 }
 
 #btn {
   display: inline-block;
   max-width: 100%;
-  border: 7px outset #5fae45;
+  border: 7px outset #1FD224;
   border-radius: 40px;
   padding: 10px 30px;
-  background-color: #d07a28;
-  color: #0a1707;
+  background-color: #0C9511;
+  color: #140e08;
   transition: 0.3s;
 }
 
 #btn:hover {
-  border: 3px inset #b85a10;
+  border: 3px inset #FF5C14;
   border-radius: 40px;
   /* 4px more padding makes up for the thinner border so nothing shifts */
   padding: 14px 34px;
-  background-color: #8fde73;
+  background-color: #FCD514;
   transition: 0.3s;
 }
 
