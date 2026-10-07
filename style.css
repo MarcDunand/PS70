@@ -1,8 +1,8 @@
 body {
     font: 20px "Gill Sans", Verdana, sans-serif;
     line-height: 1.8;
-    color: #1f1063a8;
-    background-color: #b1c4b1;
+    color: #6fa85b;
+    background-color: #160c05;
     padding-top: 0px !important;
   }
 
@@ -14,8 +14,25 @@ p {font-size: 16px;}
 .margin {margin-bottom: 30px;}
 
 a {
-  color: #982a2a;
+  color: #d07a28;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #d07a28;
+}
+
+img, iframe {
+  max-width: 100%;
+}
+
+img {
+  object-fit: contain;
+}
+
+/* keep videos and slides in proportion when they shrink to fit */
+iframe[width="1000"] {aspect-ratio: 1000 / 600; height: auto;}
+iframe[width="960"] {aspect-ratio: 960 / 569; height: auto;}
+iframe[width="560"] {aspect-ratio: 560 / 315; height: auto;}
 
 .container-fluid {
   padding: 0px;
@@ -23,59 +40,70 @@ a {
 }
 
 nav {
-  background-color: #862727;
-  color: #762b36;
+  background-color: #b85a10;
+  color: #7a3a0c;
   padding: 50px 0px;
 }
 
 .navbar-nav {
   display: flex;
-  justify-content: flex-start;
-  gap: 30px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0px 30px;
 }
 
 .nav-title{
   margin-left: 15px;
   margin-right: 15px;
-  color: #b1c4b1;
+  color: #1a6317;
+  font-weight: bold;
 }
 
-.nav-link {
-  border: 3px outset #703e3e;
+.navbar .navbar-nav .nav-link {
+  border: 3px outset #dd9440;
   border-radius: 20px;
   padding: 10px 30px;
-  background-color: hsl(0, 49%, 19%);
-  color: #ba6370;
+  background-color: #1c3d15;
+  color: #d98434;
   transition: 0.3s;
 }
 
-.nav-link:hover {
-  border: 3px outset #575d1d;
+.navbar .navbar-nav .nav-link:hover {
+  border: 3px outset #1c3d15;
   border-radius: 20px;
   padding: 10px 30px;
-  background-color: #448c22;
+  background-color: #dd9440;
+  color: #0a1707;
   transition: 0.3s;
 }
 
 #btn {
-  border: 7px outset #a67171;
+  display: inline-block;
+  max-width: 100%;
+  border: 7px outset #5fae45;
   border-radius: 40px;
   padding: 10px 30px;
-  background-color: #738e2e;
-  color: #000000;
+  background-color: #d07a28;
+  color: #0a1707;
   transition: 0.3s;
 }
 
 #btn:hover {
-  border: 3px inset #772121;
+  border: 3px inset #b85a10;
   border-radius: 40px;
-  padding: 10px 30px;
-  background-color: #af3636;
+  /* 4px more padding makes up for the thinner border so nothing shifts */
+  padding: 14px 34px;
+  background-color: #8fde73;
   transition: 0.3s;
 }
 
 .row {
   margin: auto auto;
+}
+
+.row > * {
+  margin-bottom: 70px;
 }
 
 .flexrow {
@@ -86,6 +114,8 @@ nav {
 
 .center-row {
   display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -109,4 +139,5 @@ code {
 
 #aboutme {
   padding: 20px;
+  flex: 1 1 250px;
 }

@@ -409,27 +409,7 @@ var PR=win['PR']={'createSimpleLexer':createSimpleLexer,'registerLangHandler':re
 
   console.log("[strapdown.js] [INFO] Parser and lexer well imported. Origin = " + origin + "\n Theme = " + theme);
 
-  // Stylesheets (around 128164 bytes in total, 128 Ko)
-  var linkEl = document.createElement('link');
-  linkEl.rel = 'stylesheet';
-  linkEl.href = originBase + '/themes/'+theme+'.min.css';
-  document.head.appendChild(linkEl);
-
-  var linkEl = document.createElement('link');
-  linkEl.rel = 'stylesheet';
-  linkEl.href = originBase + '/strapdown.min.css';
-  document.head.appendChild(linkEl);
-
-  var linkEl = document.createElement('link');
-  linkEl.rel = 'stylesheet';
-  linkEl.href = originBase + '/themes/bootstrap-responsive.min.css';
-  document.head.appendChild(linkEl);
-
-  // Favicon (730 bytes for 'favicon.png')
-  var linkEl = document.createElement('link');
-  linkEl.rel = 'shortcut icon';
-  linkEl.href = originBase + '/favicon.png';
-  document.head.appendChild(linkEl);
+  // Theme stylesheets and favicon are not shipped with this site (style.css is used instead)
 
   //////////////////////////////////////////////////////////////////////
   //

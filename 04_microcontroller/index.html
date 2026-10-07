@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<meta charset="utf-8">
+<link rel="icon" type="image/png" href="../favicon.png">
 <title>PS70: Intro to Digital Fabrication </title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="../style.css" rel="stylesheet">
@@ -9,11 +11,12 @@
 <nav class="navbar navbar-expand-sm navbar-dark" style=" color: #EEE7E8;">
   <div style="align-items: center; justify-content: center;" class="container-fluid">
     <div class="flexrow">
-      <h2 class="nav-title">PS70 Fall 2024</h2>
+      <h2 class="nav-title">PS70 Spring 2026</h2>
     </div>
     <div class="navbar-nav">
       <h4><a class="nav-link" href="../index.html">Home</a></h4>
       <h4><a class="nav-link" href="../about.html">About</a></h4>
+      <h4><a class="nav-link" href="../13_finalproject/index.html">Final Project</a></h4>
     </div>
   </div>
 </nav>
@@ -31,7 +34,7 @@
 
 <p>Over the course of building my paper marbling machine, there were a bunch of different actuations that I needed to add, which fall into three categories: Gantry motion, Stick up/down, pump control</p>
 
-<p>Gantry motion is built in. This is what my 3D printer Manta board is built for. It even comes with a preset coreXY mode which calculates the kinematics of how to convert the diagonal motion of turning a single motor into orthoganol motion instead.</p>
+<p>Gantry motion is built in. This is what my 3D printer Manta board is built for. It even comes with a preset coreXY mode which calculates the kinematics of how to convert the diagonal motion of turning a single motor into orthogonal motion instead.</p>
 
 <p>The really interesting parts are the stick and the pumps. The stick simply needs to be able to go up and down; it is the very basic z-axis of our gantry. When it is up, it floats above the surface of the marbling and when it's down it adds patterns into the surface of the marbling. Effectively, it works exactly like a pen plotter. The fundamental controls for the peristaltic pumps remains the same. They need to be able to pump forward, backward, stop, and pulse (now called dose).</p>
 
@@ -77,7 +80,7 @@
 
 <div class="spacer"></div>
 
-<h4>Computation Control with Paristaltic Pumps</h4>
+<h4>Computation Control with Peristaltic Pumps</h4>
 
 <p class="margin">   </p>
 
@@ -97,7 +100,7 @@ This means that my goals are to 1: be able to manually control each individual p
 
 <p class="margin">   </p>
 
-All of this also needs to be controllable from my computer, not the microcontroller, as my commputer will house the interface for designing and generating paper marblings.
+All of this also needs to be controllable from my computer, not the microcontroller, as my computer will house the interface for designing and generating paper marblings.
 
 <p class="margin">   </p>
 
@@ -130,7 +133,7 @@ This is a simple rewiring and I'm not concerned in the least, the only reason wh
 
 <p class="margin">   </p>
 
-So, next steps is to correct the wiring so I have a seperate power supply for the four pumps and then extend my computational control of the pumps such that you control them through a GUI with a Python backend rather than by manually inputting bytecodes directly into the Serial Monitor. This, once again, is easy and will make controlling the pumps integratable with my paper marbling editor and make the whole system more user-friendly.
+So, next steps is to correct the wiring so I have a separate power supply for the four pumps and then extend my computational control of the pumps such that you control them through a GUI with a Python backend rather than by manually inputting bytecodes directly into the Serial Monitor. This, once again, is easy and will make controlling the pumps integratable with my paper marbling editor and make the whole system more user-friendly.
 
 </div>
 </xmp>

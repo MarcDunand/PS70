@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<meta charset="utf-8">
+<link rel="icon" type="image/png" href="../favicon.png">
 <title>PS70: Intro to Digital Fabrication </title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="../style.css" rel="stylesheet">
@@ -9,11 +11,12 @@
 <nav class="navbar navbar-expand-sm navbar-dark" style=" color: #EEE7E8;">
   <div style="align-items: center; justify-content: center;" class="container-fluid">
     <div class="flexrow">
-      <h2 class="nav-title">PS70 Fall 2024</h2>
+      <h2 class="nav-title">PS70 Spring 2026</h2>
     </div>
     <div class="navbar-nav">
       <h4><a class="nav-link" href="../index.html">Home</a></h4>
       <h4><a class="nav-link" href="../about.html">About</a></h4>
+      <h4><a class="nav-link" href="../13_finalproject/index.html">Final Project</a></h4>
     </div>
   </div>
 </nav>
@@ -39,7 +42,7 @@
 
 <p class="margin">   </p>
 
-<p>Find here a video of my peristaltic pump control. Each peristaltic pump can be controlled individually or they can be batch controlled all via serial from my computer. Each pump can run forward, reverse, stop, or pulese, where a pulse pushes sufficient liquid through the pump for it to drip a single drop of liquid from the end of the tube.</p>
+<p>Find here a video of my peristaltic pump control. Each peristaltic pump can be controlled individually or they can be batch controlled all via serial from my computer. Each pump can run forward, reverse, stop, or pulse, where a pulse pushes sufficient liquid through the pump for it to drip a single drop of liquid from the end of the tube.</p>
 
 <p class="margin">   </p>
 
@@ -56,7 +59,7 @@
 
 <p class="margin">   </p>
 
-<p>Find here a video of the coreXY gantry system. It is controlled through a 3D printer board, specifically a Manta M4P (The board I gave you is the Manta M4P: https://biqu.equipment/products/manta-m4p-m8p?variant=39847241089122), which is running Klipper. The 3D printer board has been configured for the orthoganol motion system of a coreXY gantry, and we can see the high speed at which these systems can move, relative to traditional gantries.</p>
+<p>Find here a video of the coreXY gantry system. It is controlled through a 3D printer board, specifically a <a href="https://biqu.equipment/products/manta-m4p-m8p?variant=39847241089122">Manta M4P</a>, which is running Klipper. The 3D printer board has been configured for the orthogonal motion system of a coreXY gantry, and we can see the high speed at which these systems can move, relative to traditional gantries.</p>
 
 <p class="margin">   </p>
 
@@ -64,13 +67,13 @@
 
 <p class="margin">   </p>
 
-<p>With the oscilloscope, I decided to take a closer look at what my peristaltic pump motors were pulling in terms of voltage and current. Voltage wise, my motor was taking at maximum just under 12V and at minimum exactly 0V. This makes sense as they are working off of a 12V power supply. At first, I was confused as to the rapid oscilation between 0V and 12ish V as I hadn't programmed any PWM, but I'm pretty sure that PWM is built into the motor drivers between the ESP32 that I programmed and the motors themselves. If the drivers are taking in the simple, constant currents from the arduino and converting them into PWM for the motors themselves, it would explain what I saw. The oscillation appears to be on the order of 5 KHz.</p>
+<p>With the oscilloscope, I decided to take a closer look at what my peristaltic pump motors were pulling in terms of voltage and current. Voltage wise, my motor was taking at maximum just under 12V and at minimum exactly 0V. This makes sense as they are working off of a 12V power supply. At first, I was confused as to the rapid oscillation between 0V and 12ish V as I hadn't programmed any PWM, but I'm pretty sure that PWM is built into the motor drivers between the ESP32 that I programmed and the motors themselves. If the drivers are taking in the simple, constant currents from the arduino and converting them into PWM for the motors themselves, it would explain what I saw. The oscillation appears to be on the order of 5 KHz.</p>
 
 <p class="margin">   </p>
 
 <p>Past this MVP, the remaining ground to cover is primarily about integrating these two components. Currently, the coreXY is run off of a Manta M4P 3D printer board while the four pumps are controlled with an ESP32. Due to the limited pins on the Manta, I am not able to run everything directly off of it, so instead, I will have set up a system where the Manta sends signals to the ESP32 which then controls the pumps, which might be a bit complicated.</p>
 
-<p>Additionally, I need to create an updated version of the software side of things. Currently, I control my paper marbling machine by sending it a set of SVGs which the old chip interpreted like a set of laser cutters: dripping pigment when the laser was "on", and witholding pigment when the laser was "off". I want to create a more custom system that is designed specifically for paper marbling rather than a hacked version of an existing system.</p>
+<p>Additionally, I need to create an updated version of the software side of things. Currently, I control my paper marbling machine by sending it a set of SVGs which the old chip interpreted like a set of laser cutters: dripping pigment when the laser was "on", and withholding pigment when the laser was "off". I want to create a more custom system that is designed specifically for paper marbling rather than a hacked version of an existing system.</p>
 
 <p>Finally, this is out of scope for this semester, but part of the final goal of this project as it is defined as a research study with the CBA at the Media Lab is to replace the current coreXY design with a novel coreXYZ design (so a set of three motors capable of moving a gantry in 3D with all three of the motors stationary on the frame of the gantry). This is quite a complex system but it will ultimately allow for incredibly high speed paper marbling and the stirring pin of the marbler moving through the marbling liquid at a speed that will dramatically increase the time efficiency of the paper marbling machine relative to the previous version.</p>
 
